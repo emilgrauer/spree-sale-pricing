@@ -68,7 +68,7 @@ end
 module Spree
   module VariantDecorator
     def self.prepended(base)
-      base.delegate_belongs_to :default_price, :sale_price, :original_price
+      base.belongs_to :default_price, :sale_price, :original_price
     end
     
     # TODO also accept a class reference for calculator type instead of only a string
