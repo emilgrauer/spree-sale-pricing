@@ -68,10 +68,7 @@ end
 module Spree
   module VariantDecorator
     def self.prepended(base)
-      base.belongs_to :default_price
-      base.belongs_to :sale_price
-      base.belongs_to :original_price
-    end
+      base.delegate :default_price, :sale_price, :original_price
     
     # TODO also accept a class reference for calculator type instead of only a string
     def put_on_sale(value, calculator_type = "Spree::Calculator::DollarAmountSalePriceCalculator", all_currencies = true, start_at = Time.now, end_at = nil, enabled = true)

@@ -47,17 +47,7 @@ end
 module Spree
   module ProductDecorator
     def self.prepended(base)
-      base.belongs_to :master
-      base.belongs_to :active_sale_in
-      base.belongs_to :current_sale_in
-      base.belongs_to :next_active_sale_in
-      base.belongs_to :next_current_sale_in
-      base.belongs_to :sale_price_in
-      base.belongs_to :on_sale_in?
-      base.belongs_to :original_price_in
-      base.belongs_to :discount_percent_in
-      base.belongs_to :sale_price
-      base.belongs_to :original_price
+      base.delegate :master, :active_sale_in, :current_sale_in, :next_active_sale_in, :next_current_sale_in, :sale_price_in, :on_sale_in?, :original_price_in, :discount_percent_in, :sale_price, :original_price
     end
     
                       
@@ -98,4 +88,4 @@ module Spree
 end
 
 
-::Spree::Variant.prepend(Spree::ProductDecorator)
+::Spree::Product.prepend(Spree::ProductDecorator)
