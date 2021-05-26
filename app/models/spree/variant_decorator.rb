@@ -68,7 +68,7 @@ end
 module Spree
   module VariantDecorator
     def self.prepended(base)
-      base.delegate :default_price, :sale_price, :original_price
+      base.delegate :default_price, :sale_price, :original_price to: :product
     end
     
     
